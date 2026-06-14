@@ -1,0 +1,16 @@
+# Models and Weights
+models/
+*.pt
+*.pkl
+*.json
+!manifest.json
+
+# Python caches and builds
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+*.spec
+.venv/
+venv/

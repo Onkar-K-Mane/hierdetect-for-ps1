@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or the hierarchical fusion models in your research, please cite it as below."
+authors:
+  - family-names: "Mane"
+    given-names: "Onkar K."
+title: "HierDetect: Hierarchical PowerShell & Living-off-the-Land (LotL) Detection Tool"
+version: "1.0.0"
+date-released: 2026-06-14
+url: "https://github.com/Onkar-K-Mane/hierdetect_test"
+repository-code: "https://github.com/Onkar-K-Mane/hierdetect_test"
+keywords:
+  - "powershell detection"
+  - "living off the land"
+  - "cross-modal attention"
+  - "hierarchical machine learning"
+  - "cybersecurity"
+  - "graph attention networks"
+  - "codebert"

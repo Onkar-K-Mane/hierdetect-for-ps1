@@ -1,0 +1,26 @@
+# Instructs pip to fetch the CPU-only versions of PyTorch by default
+# CRITICAL: This reduces the final .exe size from ~3.5GB to ~600MB
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# --- Build Tooling ---
+pyinstaller>=6.3.0
+
+# --- Core Data & Utilities ---
+# Pinned below 2.0 to prevent PyInstaller C-extension ABI conflicts
+numpy>=1.24.0,<2.0.0  
+pandas>=2.0.0,<3.0.0
+scipy>=1.11.0,<2.0.0
+tqdm>=4.66.0,<5.0.0
+pyyaml>=6.0,<7.0.0
+
+# --- Machine Learning (Stage 1 & Fusion) ---
+scikit-learn>=1.3.0,<2.0.0
+xgboost>=2.0.0,<3.0.0
+
+# --- Deep Learning & NLP (Stage 2a) ---
+torch>=2.0.0,<3.0.0
+transformers>=4.35.0,<5.0.0
+tokenizers>=0.13.0,<1.0.0
+
+# --- Graph Neural Networks (Stage 2b) ---
+torch-geometric>=2.4.0,<3.0.0
