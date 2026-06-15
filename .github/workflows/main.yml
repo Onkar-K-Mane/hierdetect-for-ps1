@@ -1,5 +1,16 @@
-name: My First Workflow
+name: Initial Workflow
+
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # This enables the manual "Run workflow" button
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Run a simple script
+        run: echo "Workflow successfully fixed!"
