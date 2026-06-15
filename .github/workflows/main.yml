@@ -1,0 +1,39 @@
+name: Build and Release Windows Executable
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Build Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install torch-geometric
+          pip install pyinstaller==6.3.0
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Compile Executable with PyInstaller
+        run: |
+          pyinstaller --name "hierdetect-windows-amd64" --onefile --console --clean --collect-data "transformers" --collect-data "torch" --hidden-import "xgboost" --hidden-import "sklearn" --hidden-import "torch_geometric" --add-data "src/hierdetect/extractors/ast_extractor.ps1;hierdetect/extractors" src/hierdetect/cli.py
+
+      - name: Upload Binary to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/hierdetect-windows-amd64.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
