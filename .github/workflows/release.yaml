@@ -4,12 +4,18 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
+# --- THE FIX ---
+# Forces GitHub to use the latest secure Node.js version for its actions
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+# ---------------
+
 jobs:
   build-windows:
     runs-on: windows-latest
-
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout Code
