@@ -38,20 +38,21 @@ jobs:
 
       - name: Compile Executable with PyInstaller
         run: |
-          pyinstaller --name "hierdetect-windows-amd64" ^
-            --onefile ^
-            --console ^
-            --clean ^
-            --collect-data "transformers" ^
-            --collect-data "torch" ^
-            --collect-data "torch_geometric" ^
-            --collect-all "hierdetect" ^
-            --add-data "src/hierdetect/models:hierdetect/models" ^
-            --hidden-import "xgboost" ^
-            --hidden-import "sklearn" ^
-            --hidden-import "torch" ^
-            --hidden-import "torch_geometric" ^
-            --hidden-import "transformers" ^
+          pyinstaller `
+            --name "hierdetect-windows-amd64" `
+            --onefile `
+            --console `
+            --clean `
+            --collect-data "transformers" `
+            --collect-data "torch" `
+            --collect-data "torch_geometric" `
+            --collect-all "hierdetect" `
+            --add-data "src/hierdetect/models:hierdetect/models" `
+            --hidden-import "xgboost" `
+            --hidden-import "sklearn" `
+            --hidden-import "torch" `
+            --hidden-import "torch_geometric" `
+            --hidden-import "transformers" `
             src/hierdetect/cli.py
 
       - name: Upload Binary to GitHub Release
